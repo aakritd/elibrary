@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+
+    
+    <style>
+        body{
+            background-image: url("{% static 'images/bg1.jpg' %}");
+
+            background-position: center top;
+            background-size: 400px;
+            background-repeat: repeat-x;            
+        }
+        header{
+            background-color: green;
+            font-family: 'Tilt Neon';
+            font-style: italic;
+            font-weight: lighter;
+            font-size: 100px;
+            color: lightsalmon;
+            letter-spacing: 5px;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        nav{
+            background-color: green;
+        }
+        nav a{
+            color:lightsalmon;
+            font-family: 'Tilt Neon';
+            font-weight: lighter;
+            text-decoration: none;
+            margin-right: 400px;
+            
+            
+        }
+        nav a:hover{
+            color:yellow;
+        }
+       
+        .line1{
+            color:green;
+        }
+
+        table thead tr th{
+            display: flex;
+            justify-content: center;
+            font-family: Tilt Neon;
+            color:green;
+        }
+
+        table tbody a{
+            font-family: 'Tilt Neon';
+            font-size: large;
+            display: flex;
+            justify-content: center;
+            color:darkslateblue;
+            text-decoration: none;
+        }
+        table tbody a:hover{
+            color:tomato;
+        }
+
+        div{
+            padding:18px;
+            border:2px solid yellow;
+            margin : 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <header>
+            <img src="{% static 'images/book3.jpg' %}" width="100px" height="100px">
+            BOOKS
+            <img src="{% static 'images/book3.jpg' %}" width="100px" height="100px">
+        </header>
+
+        <hr class="line1">
+
+        <nav>
+            <a href="{% url 'main' %}"><h2>HOME</a>
+            <a href="{% url 'books' %}">BOOKS</a>
+            <a href="{% url 'about' %}">ABOUT</h2></a>
+        </nav>
+
+        <hr class="line1">
+
+    <table>
+            <thead>
+                <tr>
+                    <th>
+                        BOOK NAME
+                    </th>
+                </tr>
+                
+            </thead>
+            
+            <tbody>
+                {% for bk in bks %}
+                <tr>
+                    <td>
+                        <a href="/media/{{bk.pdf_file}}" target="_blank"> {{ bk.book_name }} </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+
+    </div>
+    
+</body>
+</html>

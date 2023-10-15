@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+
+    
+    <style>
+        body{
+            background-image: url("{% static 'images/bg1.jpg' %}");
+            
+            background-position: center top;
+            background-size: 400px;
+            background-repeat: repeat-x;            
+        }
+        header{
+            background-color: green;
+            font-family: 'Tilt Neon';
+            font-style: italic;
+            font-weight: lighter;
+            font-size: 100px;
+            color: lightsalmon;
+            letter-spacing: 5px;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        nav{
+            background-color: green;
+        }
+        nav a{
+            color:lightsalmon;
+            font-family: 'Tilt Neon';
+            font-weight: lighter;
+            text-decoration: none;
+            margin-right: 400px;
+            
+            
+        }
+        nav a:hover{
+            color:yellow;
+        }
+        p{
+            background-color: brown;
+            font-size: xx-large;
+            font-family: 'Tilt Neon';
+        }
+        .line1{
+            color:green;
+        }
+
+        div{
+            padding:18px;
+            border:2px solid yellow;
+            margin : 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <header>
+            <img src="{% static 'images/book3.jpg' %}" width="100px" height="100px">
+            E-Library.
+            <img src="{%static 'images/book3.jpg' %}" width="100px" height="100px">
+        </header>
+
+        <hr class="line1">
+        <nav>
+            <a href="{% url 'main' %}"><h2>HOME</a>
+            <a href="{% url 'books' %}">BOOKS</a>
+            <a href="{% url 'about' %}">ABOUT</h2></a>
+        </nav>
+
+        <hr class="line1">
+        <p>
+           Go to Books to download and read books.
+        </p>
+    </div>
+    
+</body>
+</html>
