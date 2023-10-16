@@ -1,0 +1,140 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+
+    
+    <style>
+
+
+        form ul.errorlist {
+        list-style: none;
+        }
+
+        body{
+            background-image: url("{% static 'images/bg1.jpg' %}");
+            
+            background-position: center top;
+            background-size: 400px;
+            background-repeat: repeat-x;            
+        }
+        header{
+            background-color: green;
+            font-family: 'Tilt Neon';
+            font-style: italic;
+            font-weight: lighter;
+            font-size: 100px;
+            color: lightsalmon;
+            letter-spacing: 5px;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        nav{
+            background-color: green;
+        }
+        nav a{
+            color:lightsalmon;
+            font-family: 'Tilt Neon';
+            font-weight: lighter;
+            text-decoration: none;
+            margin-right: 400px;
+            
+            
+        }
+        nav a:hover{
+            color:yellow;
+        }
+        p.main{
+            background-color: brown;
+            font-size: xx-large;
+            font-family: 'Tilt Neon';
+        }
+        .line1{
+            color:green;
+        }
+
+        div.background{
+            padding:18px;
+            border:2px solid yellow;
+            margin : 20px;
+        }
+
+        .searchbookstitle{
+            font-family: Tilt Neon;
+            color:green;
+        }
+
+        a.searchbooks{
+            font-family: 'Tilt Neon';
+            font-size: large;
+            color:darkred;
+            text-decoration: none;
+        }
+
+        a.searchbooks:hover{
+            color:red;
+        }
+
+        .searchform{
+            width :max-content;
+        }
+   
+    </style>
+</head>
+<body>
+    <div class="background">
+        <header>
+            <img src="{% static 'images/book3.jpg' %}" width="100px" height="100px">
+            E-Library.
+            <img src="{%static 'images/book3.jpg' %}" width="100px" height="100px">
+        </header>
+
+        <hr class="line1">
+        <nav>
+            <a href="{% url 'main' %}"><h2>HOME</a>
+            <a href="{% url 'books' %}">BOOKS</a>
+            <a href="{% url 'about' %}">ABOUT</h2></a>
+        </nav>
+
+        <hr class="line1">
+        <p class="main">
+           Go to Books to read all available books.
+
+        <form method="post" action="{% url 'main' %}" class="searchform">
+
+            {% csrf_token %}
+            
+            {{form}}
+            <button type="submit" class="searchbutton">Search</button>
+            
+        </form>
+
+        
+
+        {% if results %}
+            <h2 class="searchbookstitle">Search Results:</h2>
+            <ul >
+                {% for bk in results %}
+                <a href="/media/{{bk.pdf_file}}" target="_blank" class="searchbooks"> <p>{{ bk.book_name }}</p> </a>
+                {% endfor %}
+            </ul>
+            {% else %}
+            
+        {% endif %}
+        
+        </p>
+    </div>
+    
+</body>
+</html>
